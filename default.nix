@@ -13,7 +13,7 @@
 {
   # The `lib`, `modules`, and `overlays` names are special
   lib = import ./lib { inherit pkgs; }; # functions
-  modules = import ./modules; # NixOS modules
+  modules = import ./nixos/modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
   habitica = pkgs.callPackage ./pkgs/habitica/default.nix { };
