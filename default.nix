@@ -16,5 +16,5 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  lazy-librarian = pkgs.callPackage ./pkgs/lazy-librarian/default.nix { };
+  habitica = pkgs.callPackage ./pkgs/habitica/default.nix { };
 }
