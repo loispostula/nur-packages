@@ -17,4 +17,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   habitica = pkgs.callPackage ./pkgs/habitica/default.nix { };
+  vdb = pkgs.callPackage ./pkgs/village-des-benjamins/default.nix {};
 }
