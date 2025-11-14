@@ -13,7 +13,7 @@
 }:
 let
   py = python3.override {
-    self = py;
+    self = python3;
     packageOverrides = final: prev: {
       django = prev.django_5;
     };
@@ -32,11 +32,6 @@ let
         url = "https://files.pythonhosted.org/packages/ad/5b/2f8c4b168e6c41bf1e4b14d787deb23d80f618f0693db913bbe208a4a907/django_jazzmin-3.0.1-py3-none-any.whl";
         sha256 = "sha256-EqCkwdT9CcLu8irPah8DEStRW6aVxZ+qjqgO/IHB8hs=";
       };
-      # src = fetchPypi {
-      #   inherit version;
-      #   pname = "django_jazzmin";
-      #   sha256 = "sha256-Z64Ui63kEmegnKjkNS3e+mEheV67rCOLuaZWT/hB6xs=";
-      # };
       format = "wheel";
     }
     // pyPkgcommonConfig;
@@ -48,6 +43,8 @@ let
         inherit pname version;
         sha256 = "sha256-tFQj5Ru8CqMe9lgkjAWMqLUzpUG+Te6fuLzQWfihClg=";
       };
+      pyproject = true;
+      build-system = [ py.pkgs.setuptools ];
     }
     // pyPkgcommonConfig;
   django-ordered-model =
@@ -58,19 +55,27 @@ let
         inherit pname version;
         sha256 = "sha256-8li5diUlwApTAJ6C+Li/KjqjFei0U+KB6P27/iuMs7o=";
       };
+      pyproject = true;
+      build-system = [ py.pkgs.setuptools ];
     }
     // pyPkgcommonConfig;
-  django-colorfield =
-    py.pkgs.buildPythonPackage rec {
-      pname = "django-colorfield";
-      version = "0.14.0";
-      src = fetchPypi {
-        inherit version;
-        pname = "django_colorfield";
-        sha256 = "sha256-R429OXWojy6iqa/DJfqsoFxU6/BOyYXOEw9t6jnfuJk=";
-      };
-    }
-    // pyPkgcommonConfig;
+  django-colorfield = py.pkgs.buildPythonPackage rec {
+    pname = "django-colorfield";
+    version = "0.14.0";
+    src = fetchPypi {
+      inherit version;
+      pname = "django_colorfield";
+      sha256 = "sha256-R429OXWojy6iqa/DJfqsoFxU6/BOyYXOEw9t6jnfuJk=";
+    };
+    pyproject = true;
+    build-system = [ py.pkgs.setuptools ];
+    nativeBuildInputs = [ py.pkgs.setuptools ];
+    propagatedBuildInputs = [
+      py.pkgs.django
+      py.pkgs.pillow
+    ];
+    doCheck = false;
+  };
   django-rest-passwordreset =
     py.pkgs.buildPythonPackage rec {
       pname = "django-rest-passwordreset";
@@ -80,6 +85,8 @@ let
         pname = "django-rest-passwordreset";
         sha256 = "sha256-baON0A4M2x7VxAPma+65DxD4oac+vBP90n8rXWfRQYE=";
       };
+      pyproject = true;
+      build-system = [ py.pkgs.setuptools ];
     }
     // pyPkgcommonConfig;
 
@@ -115,7 +122,6 @@ let
 in
 py.pkgs.buildPythonApplication rec {
   inherit src pname version;
-  # version = "3.9";
   format = "other";
 
   propagatedBuildInputs = with py.pkgs; [
@@ -142,7 +148,7 @@ py.pkgs.buildPythonApplication rec {
     whitenoise
   ];
 
-  nativeBuildInputs =  [
+  nativeBuildInputs = [
     gettext
   ];
 
