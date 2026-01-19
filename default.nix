@@ -17,7 +17,8 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   habitica = pkgs.callPackage ./pkgs/habitica/default.nix { };
-  vdb = pkgs.callPackage ./pkgs/village-des-benjamins/default.nix {};
-  sshuttle = pkgs.callPackage ./pkgs/sshuttle {};
-  craig = (pkgs.callPackage ./pkgs/craig {}).craig;
+  vdb = pkgs.callPackage ./pkgs/village-des-benjamins/default.nix { };
+  sshuttle = pkgs.callPackage ./pkgs/sshuttle { };
+  craig = (pkgs.callPackage ./pkgs/craig { }).craig;
+  autostandup = pkgs.callPackage ./pkgs/autostandup/default.nix { };
 }

@@ -91,13 +91,13 @@ let
     // pyPkgcommonConfig;
 
   pname = "village_des_benjamins";
-  version = "54d19b09b786e45de193025f74d070e151aceda7";
+  version = "0cc344bec585e0fa56aa51bb025a0f77ffc06bde";
   src = fetchFromGitHub {
     owner = "postula";
     repo = pname;
     rev = version;
+    sha256 = "sha256-8aaqiYthfolQ+luomuZsnC5hf1Fc0z7+PoZqCgvBcVQ=";
     # sha256 = lib.fakeSha256;
-    sha256 = "sha256-qiy8EsEOpa0oe3KnUvKUH1r7jIBNOu35C10k8Lnfpf8=";
   };
   frontend = buildNpmPackage {
     inherit src;
@@ -143,7 +143,6 @@ py.pkgs.buildPythonApplication rec {
     openpyxl
     pillow
     psycopg2
-    sendgrid
     sentry-sdk
     whitenoise
   ];
