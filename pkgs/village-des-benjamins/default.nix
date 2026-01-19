@@ -125,6 +125,7 @@ py.pkgs.buildPythonApplication rec {
   format = "other";
 
   propagatedBuildInputs = with py.pkgs; [
+    beautifulsoup4
     boto3
     dj-database-url
     django
