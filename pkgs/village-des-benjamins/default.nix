@@ -91,12 +91,12 @@ let
     // pyPkgcommonConfig;
 
   pname = "village_des_benjamins";
-  version = "ed6007f61e2b24245f6bf3d49ae1e78a2a2887ef";
+  version = "c9d7f533fe7094a127907680a5442db514fd21e8";
   src = fetchFromGitHub {
     owner = "postula";
     repo = pname;
     rev = version;
-    sha256 = "sha256-Q0dArKBJ6UzWvRyoXPa64bjw70FeRSoKDvZXJAIk6K4=";
+    sha256 = "sha256-n4TNDCbqErg2JZF8R4YrvLUQ1iL5z12MqGmPxouzk3w=";
     # sha256 = lib.fakeSha256;
   };
   frontend = buildNpmPackage {
