@@ -91,13 +91,13 @@ let
     // pyPkgcommonConfig;
 
   pname = "village_des_benjamins";
-  version = "c9d7f533fe7094a127907680a5442db514fd21e8";
+  version = "b58b9839a77788fcfe292f73dfe641b310157c30";
   src = fetchFromGitHub {
     owner = "postula";
     repo = pname;
     rev = version;
-    sha256 = "sha256-n4TNDCbqErg2JZF8R4YrvLUQ1iL5z12MqGmPxouzk3w=";
-    # sha256 = lib.fakeSha256;
+    sha256 = "sha256-TrQ8aoQwB4lJrLhNLPqyZxMc6Sy27sTjpTNnj/J5bdQ=";
+    #sha256 = lib.fakeSha256;
   };
   frontend = buildNpmPackage {
     inherit src;
@@ -146,6 +146,7 @@ py.pkgs.buildPythonApplication rec {
     psycopg2
     sentry-sdk
     whitenoise
+    nh3
   ];
 
   nativeBuildInputs = [
