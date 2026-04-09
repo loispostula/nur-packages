@@ -91,12 +91,12 @@ let
     // pyPkgcommonConfig;
 
   pname = "village_des_benjamins";
-  version = "e6120174c55ed4f15ad8c5bc180e5dbecbc21045";
+  version = "c8a05ced94b91cea3fd1bb18403a465c61d13627";
   src = fetchFromGitHub {
     owner = "postula";
     repo = pname;
     rev = version;
-    sha256 = "sha256-z4VHQCV5Cru/ST7xU5rRnTQehSQTMOx404pTHs8/9mg=";
+    sha256 = "sha256-Y2QMzs72yH9zRafjBEQCegrxRwt290pXqQYSXf1+Mt8=";
     #sha256 = lib.fakeSha256;
   };
   frontend = buildNpmPackage {
@@ -106,6 +106,8 @@ let
     buildInputs = [
       nodejs_latest
     ];
+
+    VUE_APP_SENTRY_DSN = "https://a9819d6243f6434cad56668e4ac42159@errors.postu.la/1";
 
     npmDeps = importNpmLock {
       npmRoot = src;
